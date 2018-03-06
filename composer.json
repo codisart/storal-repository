@@ -1,5 +1,5 @@
 {
-    "name": "codisart/db-repository",
+    "name": "codisart/storal-repository",
     "description": "A proposal on how to use laminas/laminas-db",
     "type": "library",
     "require": {
@@ -7,8 +7,10 @@
         "laminas/laminas-hydrator": "^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "mockery/mockery": "^1.3"
+        "jakub-onderka/php-parallel-lint": "^1.0",
+        "mockery/mockery": "^1.3",
+        "phpro/grumphp": "^0.14.0",
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {"Storal\\": "src/"}
