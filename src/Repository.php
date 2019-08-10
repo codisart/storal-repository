@@ -2,7 +2,6 @@
 
 namespace Storal;
 
-use Storal\Enums\FilterType;
 use Laminas\Db\ResultSet\HydratingResultSet;
 use Laminas\Db\ResultSet\ResultSetInterface;
 use Laminas\Db\Sql\Literal;
@@ -10,19 +9,16 @@ use Laminas\Db\Sql\Select;
 use Laminas\Db\Sql\Where;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Hydrator\HydratorInterface;
+use Storal\Enums\FilterType;
+use Storal\Select\Count;
 use Storal\Select\Exists;
 
 abstract class Repository
 {
-    const COUNT_COLUMN = 'count';
-
-    /**
-     * @var TableGateway
-     */
+    /** @var TableGateway */
     protected $tableGateway;
 
     /**
-     * CreditCard constructor.
      * @param TableGateway $tableGateway
      */
     public function __construct(TableGateway $tableGateway)
@@ -43,9 +39,7 @@ abstract class Repository
      */
     protected function count() : Select
     {
-        return $this->select()->columns([
-            self::COUNT_COLUMN => new Literal('COUNT(1)')
-        ]);
+        return new Count($this->tableGateway->getTable());
     }
 
     /**
@@ -102,23 +96,15 @@ abstract class Repository
         return $this->tableGateway->selectWith($select);
     }
 
-    /**
-     * @param \Laminas\Db\Sql\Select $select
-     * @return int
-     */
-    protected function fetchCount(Select $select)
+    protected function fetchCount(Count $select) : int
     {
-        $statement  = $this->tableGateway->getSql()->prepareStatementForSqlObject($select);
-        $results = $statement->execute();
+        $statement = $this->tableGateway->getSql()->prepareStatementForSqlObject($select);
+        $results   = $statement->execute();
 
-        return $results->current()[self::COUNT_COLUMN];
+        return $results->current()[Count::COUNT_COLUMN];
     }
 
-    /**
-     * @param Exists $select
-     * @return bool
-     */
-    protected function fetchExists(Exists $select)
+    protected function fetchExists(Exists $select) : bool
     {
         $statement  = $this->tableGateway->getSql()->prepareStatementForSqlObject($select);
         $result = $statement->execute();

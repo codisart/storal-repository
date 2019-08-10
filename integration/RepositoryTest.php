@@ -2,16 +2,12 @@
 
 namespace Storal;
 
-use Storal\Enums\FilterType;
-use Storal\ValueObjects\QueryFilter;
-use PHPUnit\Framework\TestCase;
-use Laminas\Db\Sql\Where;
 use Laminas\Db\TableGateway\TableGateway;
-use Storal\Select\Exists;
 use Laminas\Db\Adapter\Platform\Postgresql;
-use Laminas\Db\Adapter\Driver\Pdo;
-use Laminas\Db\Adapter\Driver\Pgsql;
 use Laminas\Db\Adapter\Adapter;
+use PHPUnit\Framework\TestCase;
+use Storal\Select\Count;
+use Storal\Select\Exists;
 
 class RepositoryTest extends TestCase
 {
@@ -35,11 +31,18 @@ class RepositoryTest extends TestCase
         ]);
 
         $tableGateway = new TableGateway('vegetable', $adapter);
-        $this->testedInstance = new class($tableGateway) extends Repository {
+        $this->testedInstance = new class($tableGateway) extends Repository
+        {
             public function existsVegetable(string $name) {
                 $select = new Exists('vegetable');
                 $select->where->equalTo('name', $name);
                 return $this->fetchExists($select);
+            }
+
+            public function countVegetable(string $name) {
+                $select = $this->count();
+                $select->where->equalTo('name', $name);
+                return $this->fetchCount($select);
             }
         };
     }
@@ -59,5 +62,17 @@ class RepositoryTest extends TestCase
     {
         $result = $this->testedInstance->existsVegetable('carrot');
         self::assertFalse($result);
+    }
+
+    public function testFetchCountPotatoes()
+    {
+        $result = $this->testedInstance->countVegetable('potato');
+        self::assertSame(1, $result);
+    }
+
+    public function testFetchCountCarrots()
+    {
+        $result = $this->testedInstance->countVegetable('carrot');
+        self::assertSame(0, $result);
     }
 }
