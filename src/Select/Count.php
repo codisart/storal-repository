@@ -2,15 +2,12 @@
 
 namespace Storal\Select;
 
-use Zend\Db\Sql\Expression;
+use Zend\Db\Sql\Literal;
 use Zend\Db\Sql\Select;
-use Zend\Db\Sql\TableIdentifier;
 
-class Exists extends Select
+class Count extends Select
 {
-    private const EXISTS_ALIAS = 'exists';
-
-    private const EXISTS_EXPRESSION = "'exists'";
+    public const COUNT_COLUMN = 'count';
 
     /**
      * @param  null|string|array|TableIdentifier $table
@@ -19,17 +16,11 @@ class Exists extends Select
     {
         parent::__construct($table);
         parent::columns([
-            self::EXISTS_ALIAS => new Expression(self::EXISTS_EXPRESSION)
+            self::COUNT_COLUMN => new Literal('COUNT(1)')
         ]);
-        parent::limit(1);
     }
 
     public function columns(array $columns, $prefixColumnsWithTable = true)
-    {
-        throw new \BadMethodCallException('The columns should not be changed');
-    }
-
-    public function limit($limit)
     {
         throw new \BadMethodCallException('The columns should not be changed');
     }
