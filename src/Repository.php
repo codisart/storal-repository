@@ -10,6 +10,7 @@ use Laminas\Db\Sql\Select;
 use Laminas\Db\Sql\Where;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Hydrator\HydratorInterface;
+use Storal\Select\Exists;
 
 abstract class Repository
 {
@@ -111,6 +112,18 @@ abstract class Repository
         $results = $statement->execute();
 
         return $results->current()[self::COUNT_COLUMN];
+    }
+
+    /**
+     * @param Exists $select
+     * @return bool
+     */
+    protected function fetchExists(Exists $select)
+    {
+        $statement  = $this->tableGateway->getSql()->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        return \count($result) > 0;
     }
 
     /**
