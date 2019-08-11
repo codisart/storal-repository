@@ -10,6 +10,9 @@ matrix:
     - php: nightly
   fast_finish: true
 
+services:
+  - postgresql
+
 env:
   global:
     - CC_TEST_REPORTER_ID=ca7029058bf1713c8e8ea9538917a29b592efe7e8ce0d3bbdc7b5832bea8b064
@@ -21,12 +24,15 @@ install:
   - composer install
 
 before_script:
+  - psql -c 'CREATE DATABASE storal;' -U postgres
+  - psql -d storal -f integration/vegetable.sql -U postgres -v "ON_ERROR_STOP=1"
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 
 script:
   - vendor/bin/phpunit tests --coverage-clover build/logs/clover.xml
+  - vendor/bin/phpunit integration
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
