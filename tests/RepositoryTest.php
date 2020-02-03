@@ -21,7 +21,7 @@ class RepositoryTest extends TestCase
      */
     private $tableGateway;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->tableGateway = m::mock(TableGateway::class);
 
