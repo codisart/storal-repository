@@ -1,11 +1,8 @@
 <?php
-/**
- * @author      Matters Studio (https://matters.tech)
- */
 
-namespace Matters;
+namespace Storal;
 
-use Matters\Enums\FilterType;
+use Storal\Enums\FilterType;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\ResultSet\ResultSetInterface;
 use Zend\Db\Sql\Literal;
@@ -14,10 +11,6 @@ use Zend\Db\Sql\Where;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Hydrator\HydratorInterface;
 
-/**
- * Class Repository
- * @package Matters
- */
 abstract class Repository
 {
     const COUNT_COLUMN = 'count';
@@ -127,7 +120,7 @@ abstract class Repository
      */
     public function applyQueryFilters(Where $where, array $filters)
     {
-        /** @var \Matters\ValueObjects\QueryFilter $filter */
+        /** @var \Storal\ValueObjects\QueryFilter $filter */
         foreach ($filters as $filter) {
             switch ($filter->getType()) {
                 case FilterType::EQUAL_TO:

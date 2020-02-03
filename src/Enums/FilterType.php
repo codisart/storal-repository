@@ -1,14 +1,7 @@
 <?php
-/**
- * @author Matters Studio (https://matters.tech)
- */
 
-namespace Matters\Enums;
+namespace Storal\Enums;
 
-/**
- * Class FilterType
- * @package Matters\Enums
- */
 class FilterType
 {
     const EQUAL_TO                 = 'eq';
