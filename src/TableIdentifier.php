@@ -2,9 +2,9 @@
 
 namespace Storal;
 
-use Zend\Db\Sql\TableIdentifier as ZendTableIdentifier;
+use Laminas\Db\Sql\TableIdentifier as LaminasTableIdentifier;
 
-class TableIdentifier extends ZendTableIdentifier
+class TableIdentifier extends LaminasTableIdentifier
 {
     public function column(string $columnName)
     {

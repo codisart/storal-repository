@@ -6,8 +6,8 @@ use Storal\Enums\FilterType;
 use Storal\ValueObjects\QueryFilter;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use Zend\Db\Sql\Where;
-use Zend\Db\TableGateway\TableGateway;
+use Laminas\Db\Sql\Where;
+use Laminas\Db\TableGateway\TableGateway;
 
 class RepositoryTest extends TestCase
 {

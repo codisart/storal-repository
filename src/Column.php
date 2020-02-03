@@ -2,7 +2,7 @@
 
 namespace Storal;
 
-use Zend\Db\Sql\Expression;
+use Laminas\Db\Sql\Expression;
 
 class Column extends Expression
 {
