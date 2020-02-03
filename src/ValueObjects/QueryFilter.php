@@ -1,14 +1,7 @@
 <?php
-/**
- * @author Matters Studio (https://matters.tech)
- */
 
-namespace Matters\ValueObjects;
+namespace Storal\ValueObjects;
 
-/**
- * Class QueryFilter
- * @package Matters\ValueObjects
- */
 class QueryFilter
 {
     /** @var string */

@@ -1,21 +1,14 @@
 <?php
-/**
- * @author Matters Studio (https://matters.tech)
- */
 
-namespace Matters;
+namespace Storal;
 
-use Matters\Enums\FilterType;
-use Matters\ValueObjects\QueryFilter;
+use Storal\Enums\FilterType;
+use Storal\ValueObjects\QueryFilter;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Zend\Db\Sql\Where;
 use Zend\Db\TableGateway\TableGateway;
 
-/**
- * Class RepositoryTest
- * @package Matters
- */
 class RepositoryTest extends TestCase
 {
     /**

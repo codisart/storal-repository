@@ -1,6 +1,6 @@
 {
-    "name": "inovia-team/matters-repository",
-    "description": "Matters' proposal on how to use zendframework/zend-db",
+    "name": "codisart/db-repository",
+    "description": "A proposal on how to use laminas/laminas-db",
     "type": "library",
     "require": {
         "zendframework/zend-db": "^2.9",
@@ -11,6 +11,6 @@
         "mockery/mockery": "~0.9"
     },
     "autoload": {
-        "psr-4": {"Matters\\": "src/"}
+        "psr-4": {"Storal\\": "src/"}
     }
 }

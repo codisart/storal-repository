@@ -1,16 +1,9 @@
 <?php
-/**
- * @author Matters Studio (https://matters.tech)
- */
 
-namespace Matters\ValueObjects;
+namespace Storal\ValueObjects;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class QueryFilterTest
- * @package Matters\ValueObjects
- */
 class QueryFilterTest extends TestCase
 {
     public function testConstructor()

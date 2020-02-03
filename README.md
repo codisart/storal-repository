@@ -1,13 +1,13 @@
-# matters-repository
-Matters proposal usage of zend-repository
+# db-repository
+A proposal on how to use laminas/laminas-db
 
 # Usage
 
-## Definition of a \Matters\Repository
+## Definition of a \Storal\Repository
 
 ```php
 <?php
-    class TableRepository extends \Matters\Repository {
+    class TableRepository extends \Storal\Repository {
 
         public function findAllByName(string $name)
         {
