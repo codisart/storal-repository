@@ -1,11 +1,10 @@
 <?php
 
-
 namespace Storal;
 
 use PHPUnit\Framework\TestCase;
-use Zend\Db\Adapter\Platform\Postgresql;
-use Zend\Db\Sql\Select;
+use Laminas\Db\Adapter\Platform\Postgresql;
+use Laminas\Db\Sql\Select;
 
 class TableIdentifierTest extends TestCase
 {

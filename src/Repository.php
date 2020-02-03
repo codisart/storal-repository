@@ -3,13 +3,13 @@
 namespace Storal;
 
 use Storal\Enums\FilterType;
-use Zend\Db\ResultSet\HydratingResultSet;
-use Zend\Db\ResultSet\ResultSetInterface;
-use Zend\Db\Sql\Literal;
-use Zend\Db\Sql\Select;
-use Zend\Db\Sql\Where;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\Hydrator\HydratorInterface;
+use Laminas\Db\ResultSet\HydratingResultSet;
+use Laminas\Db\ResultSet\ResultSetInterface;
+use Laminas\Db\Sql\Literal;
+use Laminas\Db\Sql\Select;
+use Laminas\Db\Sql\Where;
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\Hydrator\HydratorInterface;
 
 abstract class Repository
 {
@@ -30,7 +30,7 @@ abstract class Repository
     }
 
     /**
-     * @return \Zend\Db\Sql\Select
+     * @return \Laminas\Db\Sql\Select
      */
     protected function select() : Select
     {
@@ -38,7 +38,7 @@ abstract class Repository
     }
 
     /**
-     * @return \Zend\Db\Sql\Select
+     * @return \Laminas\Db\Sql\Select
      */
     protected function count() : Select
     {
@@ -59,7 +59,7 @@ abstract class Repository
     }
 
     /**
-     * @return \Zend\Hydrator\HydratorInterface
+     * @return \Laminas\Hydrator\HydratorInterface
      */
     protected function getHydrator() : HydratorInterface
     {
@@ -82,7 +82,7 @@ abstract class Repository
     }
 
     /**
-     * @param \Zend\Db\Sql\Select $select
+     * @param \Laminas\Db\Sql\Select $select
      * @return null|object
      */
     protected function fetchOneEntity(Select $select)
@@ -93,8 +93,8 @@ abstract class Repository
     }
 
     /**
-     * @param \Zend\Db\Sql\Select $select
-     * @return \Zend\Db\ResultSet\ResultSetInterface
+     * @param \Laminas\Db\Sql\Select $select
+     * @return \Laminas\Db\ResultSet\ResultSetInterface
      */
     protected function fetchListEntities(Select $select) : ResultSetInterface
     {
@@ -102,7 +102,7 @@ abstract class Repository
     }
 
     /**
-     * @param \Zend\Db\Sql\Select $select
+     * @param \Laminas\Db\Sql\Select $select
      * @return int
      */
     protected function fetchCount(Select $select)
@@ -114,9 +114,9 @@ abstract class Repository
     }
 
     /**
-     * @param \Zend\Db\Sql\Where $where
+     * @param \Laminas\Db\Sql\Where $where
      * @param array $filters
-     * @return \Zend\Db\Sql\Where
+     * @return \Laminas\Db\Sql\Where
      */
     public function applyQueryFilters(Where $where, array $filters)
     {

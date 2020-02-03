@@ -33,14 +33,14 @@ A proposal on how to use laminas/laminas-db
 
 ```php
 <?php
-    $hydratingResultSet = new \Zend\Db\ResultSet\HydratingResultSet(
+    $hydratingResultSet = new \Laminas\Db\ResultSet\HydratingResultSet(
         new Hydrator(),
         new Model()
     );
 
-    $tableGateway = new \Zend\Db\TableGateway\TableGateway(
+    $tableGateway = new \Laminas\Db\TableGateway\TableGateway(
         'table_name',
-        new \Zend\Db\Adapter\Adapter($config),
+        new \Laminas\Db\Adapter\Adapter($config),
         null,
         $hydratingResultSet
     );

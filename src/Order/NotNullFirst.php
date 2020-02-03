@@ -3,7 +3,7 @@
 namespace Storal\Order;
 
 use Storal\Column;
-use Zend\Db\Sql\Expression;
+use Laminas\Db\Sql\Expression;
 
 class NotNullFirst extends Expression
 {
