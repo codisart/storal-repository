@@ -10,19 +10,23 @@ matrix:
     - php: nightly
   fast_finish: true
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=ca7029058bf1713c8e8ea9538917a29b592efe7e8ce0d3bbdc7b5832bea8b064
+
 os:
   - linux
 
-sudo: false
-
-cache:
-  directories:
-    - vendor/
+install:
+  - composer install
 
 before_script:
-  - export PATH="$PATH:$HOME/.composer/vendor/bin"
-  - phpenv config-rm xdebug.ini || echo "ext-xdebug is not available, cannot remove it, but that's OK"
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
-  - composer install
-  - ./vendor/bin/phpunit tests
+  - vendor/bin/phpunit tests --coverage-clover builds/logs/clover.xml
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

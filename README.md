@@ -1,4 +1,9 @@
-# db-repository
+# storal-repository
+
+[![Build Status](https://travis-ci.org/codisart/storal-repository.svg?branch=master)](https://travis-ci.org/codisart/storal-repository)
+[![Maintainability](https://api.codeclimate.com/v1/badges/dfd76cbcf9a90b0f4e25/maintainability)](https://codeclimate.com/github/codisart/storal-repository/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dfd76cbcf9a90b0f4e25/test_coverage)](https://codeclimate.com/github/codisart/storal-repository/test_coverage)
+
 A proposal on how to use laminas/laminas-db
 
 # Usage
