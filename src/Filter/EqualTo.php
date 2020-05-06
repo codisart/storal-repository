@@ -2,8 +2,6 @@
 
 namespace Storal\Filter;
 
-use Storal\Enums\FilterType;
-
 class EqualTo
 {
     /** @var string */
@@ -13,7 +11,6 @@ class EqualTo
     private $value;
 
     /**
-     * @param string $field
      * @param mixed $value
      */
     public function __construct(string $field, $value)
@@ -22,7 +19,7 @@ class EqualTo
         $this->value = $value;
     }
 
-    public function apply($where)
+    public function apply($where): void
     {
         $where->equalTo($this->field, $this->value);
     }

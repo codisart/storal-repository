@@ -4,19 +4,15 @@ namespace Storal\Enums;
 
 class FilterType
 {
-    const EQUAL_TO                 = 'eq';
-    const GREATER_THAN             = 'gt';
+    const EQUAL_TO = 'eq';
+    const GREATER_THAN = 'gt';
     const GREATER_THAN_OR_EQUAL_TO = 'gte';
-    const LESS_THAN                = 'lt';
-    const LESS_THAN_OR_EQUAL_TO    = 'lte';
-    const LIKE                     = 'like';
-    const IN                       = 'in';
+    const LESS_THAN = 'lt';
+    const LESS_THAN_OR_EQUAL_TO = 'lte';
+    const LIKE = 'like';
+    const IN = 'in';
 
-    /**
-     * Return query filter types
-     * @return array
-     */
-    public static function getAll()
+    public static function getAll(): array
     {
         return [
             self::EQUAL_TO,

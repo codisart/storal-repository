@@ -2,8 +2,8 @@
 
 namespace Storal\Order;
 
-use Storal\Column;
 use Laminas\Db\Sql\Expression;
+use Storal\Column;
 
 class NotNullFirst extends Expression
 {

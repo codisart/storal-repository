@@ -4,12 +4,9 @@ namespace Storal;
 
 use Laminas\Db\ResultSet\HydratingResultSet;
 use Laminas\Db\ResultSet\ResultSetInterface;
-use Laminas\Db\Sql\Literal;
 use Laminas\Db\Sql\Select;
-use Laminas\Db\Sql\Where;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Hydrator\HydratorInterface;
-use Storal\Enums\FilterType;
 use Storal\Select\Count;
 use Storal\Select\Exists;
 
@@ -18,45 +15,32 @@ abstract class Repository
     /** @var TableGateway */
     protected $tableGateway;
 
-    /**
-     * @param TableGateway $tableGateway
-     */
     public function __construct(TableGateway $tableGateway)
     {
         $this->tableGateway = $tableGateway;
     }
 
-    /**
-     * @return \Laminas\Db\Sql\Select
-     */
-    protected function select() : Select
+    protected function select(): Select
     {
         return new Select($this->tableGateway->getTable());
     }
 
-    /**
-     * @return \Laminas\Db\Sql\Select
-     */
-    protected function count() : Select
+    protected function count(): Select
     {
         return new Count($this->tableGateway->getTable());
     }
 
     /**
-     * Return the id of the last row inserted in the current table
-     * @return int
+     * Return the id of the last row inserted in the current table.
      */
-    protected function getLastIdInserted()
+    protected function getLastIdInserted(): int
     {
         return $this->tableGateway->getAdapter()->getDriver()->getLastGeneratedValue(
             $this->tableGateway->getTable() . '_id_seq'
         );
     }
 
-    /**
-     * @return \Laminas\Hydrator\HydratorInterface
-     */
-    protected function getHydrator() : HydratorInterface
+    protected function getHydrator(): HydratorInterface
     {
         return $this->tableGateway->getResultSetPrototype()->getHydrator();
     }
@@ -77,36 +61,32 @@ abstract class Repository
     }
 
     /**
-     * @param \Laminas\Db\Sql\Select $select
      * @return null|object
      */
     protected function fetchOneEntity(Select $select)
     {
         /** @var HydratingResultSet $result */
         $result = $this->tableGateway->selectWith($select);
+
         return count($result) > 0 ? $result->current() : null;
     }
 
-    /**
-     * @param \Laminas\Db\Sql\Select $select
-     * @return \Laminas\Db\ResultSet\ResultSetInterface
-     */
-    protected function fetchListEntities(Select $select) : ResultSetInterface
+    protected function fetchListEntities(Select $select): ResultSetInterface
     {
         return $this->tableGateway->selectWith($select);
     }
 
-    protected function fetchCount(Count $select) : int
+    protected function fetchCount(Count $select): int
     {
         $statement = $this->tableGateway->getSql()->prepareStatementForSqlObject($select);
-        $results   = $statement->execute();
+        $results = $statement->execute();
 
         return $results->current()[Count::COUNT_COLUMN];
     }
 
-    protected function fetchExists(Exists $select) : bool
+    protected function fetchExists(Exists $select): bool
     {
-        $statement  = $this->tableGateway->getSql()->prepareStatementForSqlObject($select);
+        $statement = $this->tableGateway->getSql()->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 
         return \count($result) > 0;
