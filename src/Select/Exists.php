@@ -13,13 +13,13 @@ class Exists extends Select
     private const EXISTS_EXPRESSION = "'exists'";
 
     /**
-     * @param  null|string|array|TableIdentifier $table
+     * @param null|array|string|TableIdentifier $table
      */
     public function __construct($table = null)
     {
         parent::__construct($table);
         parent::columns([
-            self::EXISTS_ALIAS => new Expression(self::EXISTS_EXPRESSION)
+            self::EXISTS_ALIAS => new Expression(self::EXISTS_EXPRESSION),
         ]);
         parent::limit(1);
     }

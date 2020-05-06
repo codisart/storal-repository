@@ -2,8 +2,6 @@
 
 namespace Storal\Filter;
 
-use Storal\Enums\FilterType;
-
 class LessThanOrEqualTo
 {
     /** @var string */
@@ -13,7 +11,6 @@ class LessThanOrEqualTo
     private $value;
 
     /**
-     * @param string $field
      * @param mixed $value
      */
     public function __construct(string $field, $value)
@@ -22,7 +19,7 @@ class LessThanOrEqualTo
         $this->value = $value;
     }
 
-    public function apply($where)
+    public function apply($where): void
     {
         $where->lessThanOrEqualTo($this->field, $this->value);
     }

@@ -2,8 +2,6 @@
 
 namespace Storal\Filter;
 
-use Storal\Enums\FilterType;
-
 class GreaterThanOrEqualTo
 {
     /** @var string */
@@ -13,7 +11,6 @@ class GreaterThanOrEqualTo
     private $value;
 
     /**
-     * @param string $field
      * @param mixed $value
      */
     public function __construct(string $field, $value)
@@ -22,7 +19,7 @@ class GreaterThanOrEqualTo
         $this->value = $value;
     }
 
-    public function apply($where)
+    public function apply($where): void
     {
         $where->greaterThanOrEqualTo($this->field, $this->value);
     }

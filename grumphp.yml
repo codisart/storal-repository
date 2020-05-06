@@ -3,6 +3,7 @@ parameters:
     jsonlint: ~
     yamllint: ~
     phplint: ~
+    phpcsfixer: ~
   ascii:
     failed: ~
     succeeded: ~
