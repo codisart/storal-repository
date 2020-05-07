@@ -34,7 +34,7 @@ class RepositoryTest extends TestCase
         $this->testedInstance = new class($tableGateway) extends Repository
         {
             public function existsVegetable(string $name) {
-                $select = new Exists('vegetable');
+                $select = $this->exists();
                 $select->where->equalTo('name', $name);
                 return $this->fetchExists($select);
             }
