@@ -49,6 +49,21 @@ A proposal on how to use laminas/laminas-db
     $entities = $tableRepository->findAllByName('Bob');    
 ```
 
+## Exists
+
+```php
+<?php
+    class TableRepository extends \Storal\Repository {
+
+        public function wasCooked()
+        {
+            $select = $this->exists();
+            $select->where->equalTo('is_cooked', true);
+            return $this->fetchExists($select);
+        }
+    }
+```
+
 # Tests
 
 ```php

@@ -30,6 +30,11 @@ abstract class Repository
         return new Count($this->tableGateway->getTable());
     }
 
+    protected function exists(): Select
+    {
+        return new Exists($this->tableGateway->getTable());
+    }
+
     /**
      * Return the id of the last row inserted in the current table.
      */
