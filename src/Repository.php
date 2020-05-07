@@ -111,43 +111,4 @@ abstract class Repository
 
         return \count($result) > 0;
     }
-
-    /**
-     * @param \Laminas\Db\Sql\Where $where
-     * @param array $filters
-     * @return \Laminas\Db\Sql\Where
-     */
-    public function applyQueryFilters(Where $where, array $filters)
-    {
-        /** @var \Storal\ValueObjects\QueryFilter $filter */
-        foreach ($filters as $filter) {
-            switch ($filter->getType()) {
-                case FilterType::EQUAL_TO:
-                    $where->equalTo($filter->getField(), $filter->getValue());
-                    break;
-                case FilterType::GREATER_THAN:
-                    $where->greaterThan($filter->getField(), $filter->getValue());
-                    break;
-                case FilterType::GREATER_THAN_OR_EQUAL_TO:
-                    $where->greaterThanOrEqualTo($filter->getField(), $filter->getValue());
-                    break;
-                case FilterType::LESS_THAN:
-                    $where->lessThan($filter->getField(), $filter->getValue());
-                    break;
-                case FilterType::LESS_THAN_OR_EQUAL_TO:
-                    $where->lessThanOrEqualTo($filter->getField(), $filter->getValue());
-                    break;
-                case FilterType::LIKE:
-                    $where->like($filter->getField(), '%' . $filter->getValue() . '%');
-                    break;
-                case FilterType::IN:
-                    $where->in($filter->getField(), $filter->getValue());
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        return $where;
-    }
 }
