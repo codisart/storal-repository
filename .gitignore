@@ -1,11 +1,19 @@
+# macOS
+/.DS_Store
+
 # JetBrain config folders
 /.idea/
+/.fleet/
 
 composer.lock
 /vendor/
 
 # Vagrant assets
-.vagrant
+/.vagrant
 
 # Php Cs Fixer
-.php_cs.cache
+/.php_cs.cache
+
+# phpunit
+/.phpunit.result.cache
+/coverage
