@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  storal:
+    build: .docker
+    volumes:
+      - './:/var/storal'
+      - '.docker/grumphp.yml.dist:/var/storal/grumphp.yml'
+    working_dir: '/var/storal'
+    entrypoint: ''
+    command: 'php-fpm'

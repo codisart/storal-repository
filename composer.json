@@ -3,7 +3,7 @@
     "description": "A proposal on how to use laminas/laminas-db",
     "type": "library",
     "require": {
-        "php": "^7.3 || ~8.0.0",
+        "php": "^8.0",
         "laminas/laminas-db": "^2.11",
         "laminas/laminas-hydrator": "^3.0 || ^4.0"
     },
@@ -16,5 +16,10 @@
     },
     "autoload": {
         "psr-4": {"Storal\\": "src/"}
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
     }
 }
