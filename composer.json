@@ -5,7 +5,7 @@
     "require": {
         "php": "^7.3 || ~8.0.0",
         "laminas/laminas-db": "^2.11",
-        "laminas/laminas-hydrator": "^3.0"
+        "laminas/laminas-hydrator": "^3.0 || ^4.0"
     },
     "require-dev": {
         "php-parallel-lint/php-parallel-lint": "^1.0",
