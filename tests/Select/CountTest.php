@@ -3,7 +3,7 @@
 namespace Storal\Select;
 
 use PHPUnit\Framework\TestCase;
-use Zend\Db\Adapter\Platform\Postgresql;
+use Laminas\Db\Adapter\Platform\Postgresql;
 
 class CountTest extends TestCase
 {
