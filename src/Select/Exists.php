@@ -2,9 +2,9 @@
 
 namespace Storal\Select;
 
-use Zend\Db\Sql\Expression;
-use Zend\Db\Sql\Select;
-use Zend\Db\Sql\TableIdentifier;
+use Laminas\Db\Sql\Expression;
+use Laminas\Db\Sql\Select;
+use Laminas\Db\Sql\TableIdentifier;
 
 class Exists extends Select
 {
