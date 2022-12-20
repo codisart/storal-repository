@@ -12,12 +12,9 @@ use Storal\Select\Exists;
 
 abstract class Repository
 {
-    /** @var TableGateway */
-    protected $tableGateway;
 
-    public function __construct(TableGateway $tableGateway)
+    public function __construct(protected TableGateway $tableGateway)
     {
-        $this->tableGateway = $tableGateway;
     }
 
     protected function select(): Select
