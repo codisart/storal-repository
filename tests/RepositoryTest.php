@@ -10,15 +10,9 @@ class RepositoryTest extends TestCase
 {
     use \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
-    /**
-     * @var Repository
-     */
-    private $testedInstance;
+    private Repository $testedInstance;
 
-    /**
-     * @var m\MockInterface
-     */
-    private $tableGateway;
+    private m\MockInterface $tableGateway;
 
     protected function setUp(): void
     {
