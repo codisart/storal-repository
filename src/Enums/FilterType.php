@@ -4,13 +4,13 @@ namespace Storal\Enums;
 
 class FilterType
 {
-    const EQUAL_TO = 'eq';
-    const GREATER_THAN = 'gt';
-    const GREATER_THAN_OR_EQUAL_TO = 'gte';
-    const LESS_THAN = 'lt';
-    const LESS_THAN_OR_EQUAL_TO = 'lte';
-    const LIKE = 'like';
-    const IN = 'in';
+    public const EQUAL_TO = 'eq';
+    public const GREATER_THAN = 'gt';
+    public const GREATER_THAN_OR_EQUAL_TO = 'gte';
+    public const LESS_THAN = 'lt';
+    public const LESS_THAN_OR_EQUAL_TO = 'lte';
+    public const LIKE = 'like';
+    public const IN = 'in';
 
     public static function getAll(): array
     {

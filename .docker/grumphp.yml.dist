@@ -5,7 +5,8 @@ grumphp:
     jsonlint: ~
     yamllint: ~
     phplint: ~
-    phpcsfixer: ~
+    phpcsfixer:
+        config: .php-cs-fixer.php
   ascii:
     failed: ~
     succeeded: ~

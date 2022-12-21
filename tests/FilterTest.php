@@ -6,11 +6,11 @@ use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Storal\Filter\EqualTo;
 use Storal\Filter\GreaterThan;
-use Storal\Filter\LessThan;
 use Storal\Filter\GreaterThanOrEqualTo;
+use Storal\Filter\In;
+use Storal\Filter\LessThan;
 use Storal\Filter\LessThanOrEqualTo;
 use Storal\Filter\Like;
-use Storal\Filter\In;
 
 class FilterTest extends TestCase
 {
@@ -22,48 +22,46 @@ class FilterTest extends TestCase
                 [],
             ],
             [
-                [ new EqualTo('key', 'value') ],
-                [ 'equal-to' => 1 ],
+                [new EqualTo('key', 'value')],
+                ['equal-to' => 1],
             ],
             [
-                [ new GreaterThan('key', 'value') ],
-                [ 'greater-than' => 1 ],
+                [new GreaterThan('key', 'value')],
+                ['greater-than' => 1],
             ],
             [
-                [ new GreaterThanOrEqualTo('key', 'value') ],
-                [ 'greater-than-or-equal-to' => 1 ],
+                [new GreaterThanOrEqualTo('key', 'value')],
+                ['greater-than-or-equal-to' => 1],
             ],
             [
-                [ new LessThan('key', 'value') ],
-                [ 'less-than' => 1 ],
+                [new LessThan('key', 'value')],
+                ['less-than' => 1],
             ],
             [
-                [ new LessThanOrEqualTo('key', 'value') ],
-                [ 'less-than-or-equal-to' => 1 ],
+                [new LessThanOrEqualTo('key', 'value')],
+                ['less-than-or-equal-to' => 1],
             ],
             [
-                [ new Like('key', 'value') ],
-                [ 'like' => 1 ],
+                [new Like('key', 'value')],
+                ['like' => 1],
             ],
             [
-                [ new EqualTo('key', 'value'), new GreaterThan('key', 'value') ],
-                [ 'equal-to' => 1, 'greater-than' => 1, ],
+                [new EqualTo('key', 'value'), new GreaterThan('key', 'value')],
+                ['equal-to' => 1, 'greater-than' => 1],
             ],
             [
-                [ new LessThan('key', 'value'), new Like('key', 'value') ],
-                [ 'less-than' => 1, 'like' => 1 ],
+                [new LessThan('key', 'value'), new Like('key', 'value')],
+                ['less-than' => 1, 'like' => 1],
             ],
             [
-                [ new In('key', ['value']) ],
-                [ 'in' => 1 ],
+                [new In('key', ['value'])],
+                ['in' => 1],
             ],
         ];
     }
 
     /**
      * @dataProvider applyQueryFiltersProvider
-     * @param array $filters
-     * @param array $totalCalls
      */
     public function testFilters(array $filters, array $totalCalls)
     {

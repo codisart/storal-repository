@@ -13,7 +13,7 @@ class Exists extends Select
     private const EXISTS_EXPRESSION = "'exists'";
 
     /**
-     * @param null|array|string|TableIdentifier $table
+     * @param array|string|TableIdentifier|null $table
      */
     public function __construct($table = null)
     {

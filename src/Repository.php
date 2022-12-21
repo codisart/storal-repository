@@ -66,14 +66,14 @@ abstract class Repository
     }
 
     /**
-     * @return null|object
+     * @return object|null
      */
     protected function fetchOneEntity(Select $select)
     {
         /** @var HydratingResultSet $result */
         $result = $this->tableGateway->selectWith($select);
 
-        return count($result) > 0 ? $result->current() : null;
+        return \count($result) > 0 ? $result->current() : null;
     }
 
     protected function fetchListEntities(Select $select): ResultSetInterface

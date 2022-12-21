@@ -2,13 +2,13 @@
 
 namespace Storal;
 
-use PHPUnit\Framework\TestCase;
 use Laminas\Db\Adapter\Platform\Postgresql;
 use Laminas\Db\Sql\Select;
+use PHPUnit\Framework\TestCase;
 
 class TableIdentifierTest extends TestCase
 {
-    public function testSelect_simpleTable()
+    public function testSelectSimpleTable()
     {
         $groupTable = new TableIdentifier('group');
         $select = (new Select())->from($groupTable);
@@ -22,7 +22,8 @@ class TableIdentifierTest extends TestCase
             $select->getSqlString()
         );
     }
-    public function testSelect_tableWithSchema()
+
+    public function testSelectTableWithSchema()
     {
         $groupTable = new TableIdentifier('group', 'invoicing');
         $select = (new Select())->from($groupTable);
@@ -34,8 +35,7 @@ class TableIdentifierTest extends TestCase
         $select->where
             ->equalTo($ownerId, 4);
 
-        $platform = new class extends Postgresql
-        {
+        $platform = new class() extends Postgresql {
             public function quoteValue($value)
             {
                 return $value;

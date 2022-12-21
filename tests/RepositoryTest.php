@@ -2,19 +2,9 @@
 
 namespace Storal;
 
-use Storal\Enums\FilterType;
-use Storal\ValueObjects\QueryFilter;
+use Laminas\Db\TableGateway\TableGateway;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use Laminas\Db\Sql\Where;
-use Laminas\Db\TableGateway\TableGateway;
-use Storal\Filter\EqualTo;
-use Storal\Filter\GreaterThan;
-use Storal\Filter\LessThan;
-use Storal\Filter\GreaterThanOrEqualTo;
-use Storal\Filter\LessThanOrEqualTo;
-use Storal\Filter\Like;
-use Storal\Filter\In;
 
 class RepositoryTest extends TestCase
 {
