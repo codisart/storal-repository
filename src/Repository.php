@@ -12,7 +12,6 @@ use Storal\Select\Exists;
 
 abstract class Repository
 {
-
     public function __construct(protected TableGateway $tableGateway)
     {
     }
