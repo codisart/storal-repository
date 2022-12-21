@@ -2,8 +2,8 @@
 
 namespace Storal\Order;
 
-use Storal\TableIdentifier;
 use PHPUnit\Framework\TestCase;
+use Storal\TableIdentifier;
 
 class NotNullFirstTest extends TestCase
 {

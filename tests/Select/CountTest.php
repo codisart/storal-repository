@@ -2,8 +2,8 @@
 
 namespace Storal\Select;
 
-use PHPUnit\Framework\TestCase;
 use Laminas\Db\Adapter\Platform\Postgresql;
+use PHPUnit\Framework\TestCase;
 
 class CountTest extends TestCase
 {
@@ -12,11 +12,10 @@ class CountTest extends TestCase
         $select = (new Count())->from('carot');
         $select->where("color = 'purple'");
 
-        $platform = new class extends Postgresql
-        {
+        $platform = new class() extends Postgresql {
             public function quoteValue($value)
             {
-                return '"'. $value .'"';
+                return '"' . $value . '"';
             }
         };
 

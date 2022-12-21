@@ -10,7 +10,7 @@ class Count extends Select
     public const COUNT_COLUMN = 'count';
 
     /**
-     * @param null|array|string|TableIdentifier $table
+     * @param array|string|TableIdentifier|null $table
      */
     public function __construct($table = null)
     {

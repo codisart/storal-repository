@@ -2,12 +2,9 @@
 
 namespace Storal;
 
-use Laminas\Db\TableGateway\TableGateway;
-use Laminas\Db\Adapter\Platform\Postgresql;
 use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\TableGateway\TableGateway;
 use PHPUnit\Framework\TestCase;
-use Storal\Select\Count;
-use Storal\Select\Exists;
 
 class RepositoryTest extends TestCase
 {
@@ -27,21 +24,24 @@ class RepositoryTest extends TestCase
             'driver' => 'pgsql',
             'database' => 'storal',
             'username' => 'postgres',
-            'password' => ''
+            'password' => '',
         ]);
 
         $tableGateway = new TableGateway('vegetable', $adapter);
-        $this->testedInstance = new class($tableGateway) extends Repository
-        {
-            public function existsVegetable(string $name) {
+        $this->testedInstance = new class($tableGateway) extends Repository {
+            public function existsVegetable(string $name)
+            {
                 $select = $this->exists();
                 $select->where->equalTo('name', $name);
+
                 return $this->fetchExists($select);
             }
 
-            public function countVegetable(string $name) {
+            public function countVegetable(string $name)
+            {
                 $select = $this->count();
                 $select->where->equalTo('name', $name);
+
                 return $this->fetchCount($select);
             }
         };

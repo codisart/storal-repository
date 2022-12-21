@@ -2,9 +2,9 @@
 
 namespace Storal\Select;
 
+use Laminas\Db\Adapter\Platform\Postgresql;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
-use Laminas\Db\Adapter\Platform\Postgresql;
 
 class ExistsTest extends TestCase
 {
@@ -15,11 +15,10 @@ class ExistsTest extends TestCase
         $select = (new Exists())->from('potatoes');
         $select->where('potato_id = 42');
 
-        $platform = new class extends Postgresql
-        {
+        $platform = new class() extends Postgresql {
             public function quoteValue($value)
             {
-                return '"'. $value .'"';
+                return '"' . $value . '"';
             }
         };
 
