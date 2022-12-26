@@ -67,5 +67,5 @@ A proposal on how to use laminas/laminas-db
 # Tests
 
 ```php
-./vendor/bin/phpunit tests
+./vendor/bin/phpunit
 ```
