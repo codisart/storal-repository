@@ -6,7 +6,7 @@ use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\TableGateway\TableGateway;
 use PHPUnit\Framework\TestCase;
 
-class RepositoryTest extends TestCase
+class RepositoryIntegrationTest extends TestCase
 {
     /**
      * @var Repository
@@ -24,8 +24,24 @@ class RepositoryTest extends TestCase
             'driver' => 'pgsql',
             'database' => 'storal',
             'username' => 'postgres',
-            'password' => '',
+            'password' => 'postgres',
+            'hostname' => 'database',
         ]);
+        $adapter->query(
+            'DROP TABLE vegetable',
+            Adapter::QUERY_MODE_EXECUTE
+        );
+        $adapter->query(
+            'CREATE TABLE vegetable (
+            id SERIAL PRIMARY KEY,
+            name TEXT
+            )',
+            Adapter::QUERY_MODE_EXECUTE
+        );
+        $adapter->query(
+            "INSERT INTO vegetable (name) VALUES ('potato')",
+            Adapter::QUERY_MODE_EXECUTE
+        );
 
         $tableGateway = new TableGateway('vegetable', $adapter);
         $this->testedInstance = new class($tableGateway) extends Repository {

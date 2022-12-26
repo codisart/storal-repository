@@ -9,3 +9,27 @@ services:
     working_dir: '/var/storal'
     entrypoint: ''
     command: 'php-fpm'
+    networks:
+      - "storal"
+
+  database:
+    image: postgres:15
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: storal
+      TZ: "UTC+1"
+      PGTZ: "UTC+1"
+    networks:
+      - "storal"
+
+volumes:
+    postgres:
+
+networks:
+  storal:
+    driver: bridge

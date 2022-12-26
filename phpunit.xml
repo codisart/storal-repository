@@ -6,8 +6,11 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="Storal Test Suite">
+    <testsuite name="Unit Tests Suite">
       <directory>./tests/</directory>
+    </testsuite>
+    <testsuite name="Integration Tests Suite">
+      <directory>./integration/</directory>
     </testsuite>
   </testsuites>
 </phpunit>
