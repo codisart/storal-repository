@@ -9,10 +9,7 @@ class Count extends Select
 {
     public const COUNT_COLUMN = 'count';
 
-    /**
-     * @param array|string|TableIdentifier|null $table
-     */
-    public function __construct($table = null)
+    public function __construct(array|string|TableIdentifier|null $table = null)
     {
         parent::__construct($table);
         parent::columns([

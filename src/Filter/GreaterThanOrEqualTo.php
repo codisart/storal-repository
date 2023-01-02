@@ -2,13 +2,11 @@
 
 namespace Storal\Filter;
 
-class GreaterThanOrEqualTo
-{
-    public function __construct(private string $field, private mixed $value)
-    {
-    }
+use Laminas\Db\Sql\Where;
 
-    public function apply($where): void
+class GreaterThanOrEqualTo extends Filter
+{
+    public function apply(Where $where): void
     {
         $where->greaterThanOrEqualTo($this->field, $this->value);
     }

@@ -61,10 +61,7 @@ abstract class Repository
         return $this->tableGateway->getAdapter()->getDriver()->getConnection()->commit();
     }
 
-    /**
-     * @return object|null
-     */
-    protected function fetchOneEntity(Select $select)
+    protected function fetchOneEntity(Select $select): ?object
     {
         /** @var HydratingResultSet $result */
         $result = $this->tableGateway->selectWith($select);

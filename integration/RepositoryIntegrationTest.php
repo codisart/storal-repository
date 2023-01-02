@@ -8,15 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class RepositoryIntegrationTest extends TestCase
 {
-    /**
-     * @var Repository
-     */
-    private $testedInstance;
-
-    /**
-     * @var m\MockInterface
-     */
-    private $tableGateway;
+    private Repository $testedInstance;
 
     protected function setUp(): void
     {

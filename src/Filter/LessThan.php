@@ -2,13 +2,11 @@
 
 namespace Storal\Filter;
 
-class LessThan
-{
-    public function __construct(private string $field, private mixed $value)
-    {
-    }
+use Laminas\Db\Sql\Where;
 
-    public function apply($where): void
+class LessThan extends Filter
+{
+    public function apply(Where $where): void
     {
         $where->lessThan($this->field, $this->value);
     }

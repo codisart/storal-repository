@@ -2,13 +2,11 @@
 
 namespace Storal\Filter;
 
-class In
-{
-    public function __construct(private string $field, private mixed $value)
-    {
-    }
+use Laminas\Db\Sql\Where;
 
-    public function apply($where): void
+class In extends Filter
+{
+    public function apply(Where $where): void
     {
         $where->in($this->field, $this->value);
     }
