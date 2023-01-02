@@ -34,6 +34,10 @@ class RepositoryIntegrationTest extends TestCase
             "INSERT INTO vegetable (name) VALUES ('potato')",
             Adapter::QUERY_MODE_EXECUTE
         );
+        $adapter->query(
+            "INSERT INTO vegetable (name) VALUES ('onion'),('onion')",
+            Adapter::QUERY_MODE_EXECUTE
+        );
 
         $tableGateway = new TableGateway('vegetable', $adapter);
         $this->testedInstance = new class($tableGateway) extends Repository {
@@ -51,6 +55,22 @@ class RepositoryIntegrationTest extends TestCase
                 $select->where->equalTo('name', $name);
 
                 return $this->fetchCount($select);
+            }
+
+            public function fetchFirstVegetable(string $name)
+            {
+                $select = $this->select()->columns(['name'])->limit(1);
+                $select->where->equalTo('name', $name);
+
+                return $this->fetchOneEntity($select);
+            }
+
+            public function fetchAllVegetables(string $name)
+            {
+                $select = $this->select();
+                $select->where->equalTo('name', $name);
+
+                return $this->fetchListEntities($select);
             }
         };
     }
@@ -82,5 +102,18 @@ class RepositoryIntegrationTest extends TestCase
     {
         $result = $this->testedInstance->countVegetable('carrot');
         self::assertSame(0, $result);
+    }
+
+    public function testFetchFirstPotato()
+    {
+        $result = $this->testedInstance->fetchFirstVegetable('potato');
+        self::assertInstanceOf(\ArrayObject::class, $result);
+    }
+
+    public function testFetchAllOnions()
+    {
+        $result = $this->testedInstance->fetchAllVegetables('onion');
+        self::assertInstanceOf(\Laminas\Db\ResultSet\ResultSet::class, $result);
+        self::assertSame(2, \count($result));
     }
 }
