@@ -12,10 +12,7 @@ class Exists extends Select
 
     private const EXISTS_EXPRESSION = "'exists'";
 
-    /**
-     * @param array|string|TableIdentifier|null $table
-     */
-    public function __construct($table = null)
+    public function __construct(array|string|TableIdentifier|null $table = null)
     {
         parent::__construct($table);
         parent::columns([
@@ -31,6 +28,6 @@ class Exists extends Select
 
     public function limit($limit)
     {
-        throw new \BadMethodCallException('The columns should not be changed');
+        throw new \BadMethodCallException('The limit should not be changed');
     }
 }

@@ -2,13 +2,11 @@
 
 namespace Storal\Filter;
 
-class EqualTo
-{
-    public function __construct(private string $field, private mixed $value)
-    {
-    }
+use Laminas\Db\Sql\Where;
 
-    public function apply($where): void
+class EqualTo extends Filter
+{
+    public function apply(Where $where): void
     {
         $where->equalTo($this->field, $this->value);
     }

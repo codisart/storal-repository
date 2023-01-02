@@ -2,6 +2,7 @@
 
 namespace Storal;
 
+use Laminas\Db\Sql\Where;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Storal\Filter\EqualTo;
